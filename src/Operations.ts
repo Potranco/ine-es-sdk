@@ -1,13 +1,15 @@
-import type { Operation } from './ineInterfaces';
+import type { Operation } from './interfaces';
+import createUrl from './createUrl';
+import type { lang } from './interfaces'
 
-const INE_URL_OPERATIONS = 'https://servicios.ine.es/wstempus/js/ES/OPERACIONES_DISPONIBLES';
+const INE_URL_OPERATIONS = 'OPERACIONES_DISPONIBLES';
 
 /**
  * Obtiene todas las operaciones disponibles del INE
  */
-export const getAllOperations = async (): Promise<Operation[]> => {
+export const getAllOperations = async (language:lang = 'ES'): Promise<Operation[]> => {
   try {
-    const res = await fetch(INE_URL_OPERATIONS);
+    const res = await fetch(createUrl(language, INE_URL_OPERATIONS));
     if (!res.ok) {
       throw new Error(`HTTP ${res.status}: ${res.statusText}`);
     }
@@ -23,9 +25,9 @@ export const getAllOperations = async (): Promise<Operation[]> => {
  * Obtiene una operación por su ID
  * @param id - Identificador único de la operación
  */
-export const getOperationById = async (id: number): Promise<Operation | null> => {
+export const getOperationById = async (id: number, language:lang = 'ES'): Promise<Operation | null> => {
   try {
-    const res = await fetch(INE_URL_OPERATIONS);
+    const res = await fetch(createUrl(language, INE_URL_OPERATIONS));
     if (!res.ok) {
       throw new Error(`HTTP ${res.status}: ${res.statusText}`);
     }
@@ -42,9 +44,9 @@ export const getOperationById = async (id: number): Promise<Operation | null> =>
  * Obtiene operaciones cuya descripción contiene la palabra clave
  * @param keyword - Palabra clave para buscar en el nombre de la operación
  */
-export const getOperationByKeyword = async (keyword: string): Promise<Operation[]> => {
+export const getOperationByKeyword = async (keyword: string, language:lang = 'ES'): Promise<Operation[]> => {
   try {
-    const res = await fetch(INE_URL_OPERATIONS);
+    const res = await fetch(createUrl(language, INE_URL_OPERATIONS));
     if (!res.ok) {
       throw new Error(`HTTP ${res.status}: ${res.statusText}`);
     }

@@ -2,6 +2,8 @@
  * Interfaz que representa una operación disponible en la API del INE
  * Estructura obtenida de: https://servicios.ine.es/wstempus/js/ES/OPERACIONES_DISPONIBLES
  */
+export type lang = 'ES' | 'EN'
+
 export interface Operation {
   /** Identificador único de la operación */
   Id: number;

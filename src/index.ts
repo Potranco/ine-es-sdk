@@ -1,11 +1,12 @@
-import {
-  getAllOperations,
-  getOperationById,
-  getOperationByKeyword
-} from './ineOperations'
+import { getAllOperations, getOperationById, getOperationByKeyword } from './Operations'
+import { getTables, getTablesByKeyword } from './Tables'
+import { getDataTables } from './DataTables'
 
 export {
   getAllOperations,
   getOperationById,
-  getOperationByKeyword
+  getOperationByKeyword,
+  getTables,
+  getTablesByKeyword,
+  getDataTables
 }
