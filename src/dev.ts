@@ -15,6 +15,7 @@ console.log('5. Operations by keyword "Hello" (0 results):', await getOperationB
 /*
 import { getTables, getTablesByKeyword } from './index'
 
+
 console.info('Tables:')
 console.log('1. Tables of operation 236', await getTables(236))
 await getTables(0)

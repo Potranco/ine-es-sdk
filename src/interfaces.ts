@@ -7,64 +7,83 @@ export type lang = 'ES' | 'EN'
 export interface Operation {
   /** Identificador único de la operación */
   Id: number;
-
   /** Código IOE (Orden de las Cuentas Oficiales de Estadística) */
   Cod_IOE: string;
-
   /** Nombre descriptivo de la operación */
   Nombre: string;
-
   /** Código abreviado de la operación */
   Codigo: string;
-
   /** URL opcional que apunta a la página de la operación en la web del INE */
   Url?: string;
 }
 
-/**
- * Error de tipo NetworkError
- * Representa un fallo en la conexión o en la petición HTTP
- */
-export interface NetworkError {
-  /** Descripción del error */
-  message: string;
-
-  /** El error original (Response | Error) */
-  error: Error | Response;
+export interface TablasOperacion {
+  Id: number;
+  Nombre: string;
+  // suele venir tipo "N", "A", etc
+  Codigo?: string;
+  // periodicidad
+  Periodicidad?: InePeriodicidad;
+  // publicación asociada
+  Publicacion?: InePublicacion;
+  // periodo inicial
+  PeriodoInicio?: InePeriodo;
+  // año inicio
+  AnyoInicio?: number;
+  // fecha última actualización/publicación
+  PubFechaAct?: string;
+  // fecha referencia final
+  FechaRef_fin?: string | null;
+  // última modificación
+  Ultima_Modificacion?: string;
+  // algunos endpoints añaden más campos
+  [key: string]: unknown;
 }
 
-/**
- * Error genérico de operación
- */
-export interface OperationError {
-  /** Descripción del error */
-  message: string;
-
-  /** Detalle del error */
-  details?: unknown;
+interface InePeriodicidad {
+  Id: number;
+  Nombre: string;
 }
 
-/**
- * Tipo de error para la API del INE
- */
-export type INEError = NetworkError | OperationError;
+interface InePublicacion {
+  Id: number;
+  Nombre: string;
+}
 
-/**
- * Resultado genérico de una operación
- */
-export type Result<T> = T | INEError;
+interface InePeriodo {
+  Id: number;
+  Nombre: string;
+}
 
-/**
- * Resultado de obtener todas las operaciones
- */
-export type GetAllOperationsResult = Operation[] | INEError;
+// =========================
+// DATOS_TABLA
+// =========================
 
-/**
- * Resultado de obtener una operación por ID
- */
-export type GetOperationByIdResult = Operation | null | INEError;
-
-/**
- * Resultado de buscar operaciones por palabra clave
- */
-export type GetOperationByKeywordResult = Operation[] | INEError;
+export interface DatosTabla {
+  Id: number;
+  // nombre serie
+  Nombre: string;
+  // código serie
+  COD?: string;
+  // unidad
+  FK_Unidad?: number;
+  Unidad?: string;
+  // escala
+  FK_Escala?: number;
+  Escala?: string;
+  // fecha y periodo
+  Fecha?: string;
+  FK_Periodo?: number;
+  Periodo?: string;
+  // año
+  Anyo?: number;
+  // valor dato
+  Valor?: number | string | null;
+  // tipo dato
+  FK_TipoDato?: number;
+  TipoDato?: string;
+  // flags posibles
+  Secreto?: boolean;
+  // metadatos extra
+  [key: string]: unknown;
+}
