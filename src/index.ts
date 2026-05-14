@@ -1,6 +1,7 @@
 import { getAllOperations, getOperationById, getOperationByKeyword } from './Operations'
 import { getTables, getTablesByKeyword } from './Tables'
 import { getDataTables } from './DataTables'
+import { getData } from './getData'
 
 export {
   getAllOperations,
@@ -8,5 +9,6 @@ export {
   getOperationByKeyword,
   getTables,
   getTablesByKeyword,
-  getDataTables
+  getDataTables,
+  getData
 }
