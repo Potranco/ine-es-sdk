@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "main": "./dist/ine-es-sdk.es.js",
+  "types": "./dist/ine-es-sdk.es.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -24,6 +25,8 @@
   },
   "files": [
     "dist"
-  ]
-
+  ],
+  "dependencies": {
+    "vite-plugin-dts": "^5.0.0"
+  }
 }
