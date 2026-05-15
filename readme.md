@@ -18,8 +18,10 @@ Esta librería facilita el consumo de la API **WS-TempUS** del INE para obtener:
 
 ## 🛠️ Instalación
 
-
-
+- **PNPM**
+```bash
+pnpm add github:Potranco/ine-es-sdk
+```
 
 ---
 
