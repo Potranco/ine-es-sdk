@@ -18,8 +18,8 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/ine-es-sdk.es.js",
+      "require": "./dist/ine-es-sdk.umd.js"
     }
   },
   "files": [
