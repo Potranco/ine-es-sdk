@@ -3,8 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -22,6 +20,10 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     }
-  }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
 
 }
