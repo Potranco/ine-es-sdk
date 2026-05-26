@@ -268,25 +268,22 @@ import {
 async function main() {
   try {
     // 1. Obtener todas las operaciones
-    const operations = await getAllOperations('ES');
+    const operations:any = await getAllOperations('ES');
     console.log(`Total operaciones: ${operations.length}`);
-
     const idOp = operations[0].Id;
-    const keyword = "consumo";
-
+    const keyword = "Efectos";
     // 2. Buscar tablas por palabra clave
-    const tables = await getTablesByKeyword(idOp, keyword, 'ES');
-    
+    const tables:any = await getTablesByKeyword(idOp, keyword, 'ES');
     // 3. Obtener datos de la primera tabla
     if (tables.length > 0) {
       const firstTableId = tables[0].Id;
-      const data = await getDataTables(firstTableId, 'ES');
-      console.log(`Serie: ${data.Nombre}`);
-      console.log(`Periodo: ${data.Fecha} - ${data.Periodo}`);
-      console.log(`Valor: ${data.Valor}`);
+      const data:any = await getDataTables(firstTableId, 'ES');
+      console.log(`Año: ${data[0].Data[0].Anyo}`);
+      console.log(`Fecha: ${data[0].Data[0].Fecha} - ${data[0].Data[0].FK_Periodo}`);
+      console.log(`Valor: ${data[0].Data[0].Valor}`);
     }
 
-  } catch (error) {
+  } catch (error:any) {
     console.error('Error:', error.message);
   }
 }

@@ -54,3 +54,36 @@ await getData('ES', 'DATOS_TABLA', 69385, 'det=0')
 await getData('ES', 'DATOS_TABLA', 69385, 'det=0')
     .then(res => console.log(res))
 */
+
+
+/** Ejemplo funcional */
+
+import {
+  getAllOperations,
+  getTablesByKeyword,
+  getDataTables
+} from './index';
+
+async function main() {
+  try {
+    // 1. Obtener todas las operaciones
+    const operations:any = await getAllOperations('ES');
+    console.log(`Total operaciones: ${operations.length}`);
+    const idOp = operations[0].Id;
+    const keyword = "Efectos";
+    // 2. Buscar tablas por palabra clave
+    const tables:any = await getTablesByKeyword(idOp, keyword, 'ES');
+    // 3. Obtener datos de la primera tabla
+    if (tables.length > 0) {
+      const firstTableId = tables[0].Id;
+      const data:any = await getDataTables(firstTableId, 'ES');
+      console.log(`Año: ${data[0].Data[0].Anyo}`);
+      console.log(`Fecha: ${data[0].Data[0].Fecha} - ${data[0].Data[0].FK_Periodo}`);
+      console.log(`Valor: ${data[0].Data[0].Valor}`);
+    }
+
+  } catch (error:any) {
+    console.error('Error:', error.message);
+  }
+}
+main()
