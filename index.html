@@ -7,7 +7,59 @@
   </head>
   <body>
     <h1># INE ES SDK</h1>
+    
+    <h2>📚 Descripción</h2>
+    <p>Esta librería facilita el consumo de la API <strong>WS-TempUS</strong>.</p>
     <p>HTML de desarrollo, sin uso en produccion. Abrir la consola del navegador.</p>
+    
+    <h2>📖 Funciones</h2>
+    
+    <h3>getAllOperations(lang?: 'ES' | 'EN')</h3>
+    <p>Obtiene todas las operaciones disponibles en la API del INE.</p>
+    <pre><code>const operations = await getAllOperations('ES');</code></pre>
+    
+    <h3>getOperationById(id: number, lang?: 'ES' | 'EN')</h3>
+    <p>Obtiene una operación específica por su ID.</p>
+    <pre><code>const operation = await getOperationById(123);</code></pre>
+    
+    <h3>getOperationByKeyword(keyword: string, lang?: 'ES' | 'EN')</h3>
+    <p>Busca operaciones por palabra clave en el nombre.</p>
+    <pre><code>const populationOps = await getOperationByKeyword("población");</code></pre>
+    
+    <h3>getTables(id: number, lang?: 'ES' | 'EN')</h3>
+    <p>Obtiene las tablas asociadas a una operación (por su ID de operación).</p>
+    <pre><code>const tables = await getTables(idOperation, 'ES');</code></pre>
+    
+    <h3>getTablesByKeyword(id: number, keyword: string, lang?: 'ES' | 'EN')</h3>
+    <p>Busca tablas por palabra clave dentro de una operación específica.</p>
+    <pre><code>const tables = await getTablesByKeyword(456, "consumo", 'ES');</code></pre>
+    
+    <h3>getDataTables(tableId: number, lang?: 'ES' | 'EN')</h3>
+    <p>Obtiene los datos de la tabla serie temporal específica.</p>
+    <pre><code>const data = await getDataTables(tablaId, 'ES');</code></pre>
+    
+    <h2>🔗 Base URL API</h2>
+    <p>Todas las llamadas se hacen al endpoint:</p>
+    <pre><code>https://servicios.ine.es/wstempus/js/{IDIOMA}/{FUNCION}/{ID}?{PARAMS}</code></pre>
+    
+    <h2>⚠️ Errores</h2>
+    <p>Se lanzan errores <code>Error</code> cuando:</p>
+    <ul>
+      <li>La respuesta HTTP tiene estado no <code>2xx</code></li>
+      <li>El JSON de respuesta no es válido</li>
+      <li>Faltan parámetros requeridos</li>
+    </ul>
+    
+    <h2>📄 Licencia</h2>
+    <p><strong>MIT</strong> - Uso libre y comercial.</p>
+    
+    <h2>🔗 Enlaces</h2>
+    <ul>
+      <li><a href="https://servicios.ine.es/">INE - Servicios Web</a></li>
+      <li><a href="https://www.ine.es/diccionarios.html">INE - Diccionario Operativo</a></li>
+      <li><a href="https://www.ine.es/start_dgenio.do">INE - Estadísticas</a></li>
+    </ul>
+    
     <script type="module" src="/src/dev.ts"></script>
   </body>
 </html>
