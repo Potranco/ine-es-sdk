@@ -1,3 +1,4 @@
+/* vitest-coverage-report-disable */
 /** DEV OPERACIONES */
 /*
 import { getAllOperations, getOperationById, getOperationByKeyword } from './index';

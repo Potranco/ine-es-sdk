@@ -19,5 +19,6 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src", "src/dev.ts"],
+  "exclude": ["src/**/__tests__/**"]
 }

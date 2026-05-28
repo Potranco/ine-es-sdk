@@ -26,4 +26,21 @@ export default defineConfig({
     minify: true, // mantiene código legible
     target: 'esnext', // Aprovecha todas las features modernas de Node 24
   },
+  test: {
+    globals: true,
+    environment: 'node',
+    coverage: {
+      provider: "v8",
+      reporter: ['text', 'json', 'html'],
+      exclude: [
+        'dist/**',
+        'node_modules/**',
+        './*.js',
+        'src/dev.ts',             // Por si acaso está en la raíz pura
+        'src/interfaces.ts',
+        'src/__tests__/**'
+
+      ]
+    },
+  }
 })

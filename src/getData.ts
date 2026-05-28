@@ -8,8 +8,7 @@ const getData = async (lang:lang = 'ES', func:string, id?:number, params?:string
 
         return await res.json()
     } catch (err) {
-        const error = err instanceof Error ? err : new Error(String(err));
-        throw error;
+        throw err;
     }
 }
 
